@@ -6,6 +6,7 @@ import datetime
 import pandas_market_calendars as mcal
 import matplotlib.pyplot as plt
 import time
+import streamlit as st
 
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LinearRegression, Ridge, Lasso, LogisticRegression
