@@ -5,6 +5,7 @@ import numpy as np
 import datetime
 import pandas_market_calendars as mcal
 import matplotlib.pyplot as plt
+import time
 
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LinearRegression, Ridge, Lasso, LogisticRegression
@@ -34,14 +35,25 @@ def get_last_trading_day():
 
 def fetch_stock_data(ticker):
     last_day = get_last_trading_day()
-    df = yf.download(
-        ticker, end=(last_day + datetime.timedelta(days=1)).strftime("%Y-%m-%d")
-    )
-    if df.empty:
-        raise ValueError(f"No stock data found for ticker '{ticker}'. Please check the ticker or try again later.")
-    df.reset_index(inplace=True)
-    df.drop(columns=["Dividends", "Stock Splits"], inplace=True, errors="ignore")
-    return df
+
+    # Retry logic to handle rate limiting
+    for attempt in range(3):
+        try:
+            df = yf.download(
+                ticker, end=(last_day + datetime.timedelta(days=1)).strftime("%Y-%m-%d")
+            )
+            if df.empty:
+                raise ValueError(f"No stock data found for ticker '{ticker}'. Please check the ticker or try again later.")
+            df.reset_index(inplace=True)
+            df.drop(columns=["Dividends", "Stock Splits"], inplace=True, errors="ignore")
+            return df
+        except Exception as e:
+            if "Rate limited" in str(e) or "Too Many Requests" in str(e):
+                time.sleep(5)  # wait before retrying
+                continue
+            raise e
+
+    raise ValueError("Yahoo Finance API rate limit exceeded. Please try again in a few minutes.")
 
 
 def add_features(df):
