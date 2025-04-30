@@ -49,11 +49,11 @@ def fetch_stock_data(ticker):
             df.drop(columns=["Dividends", "Stock Splits"], inplace=True, errors="ignore")
             return df
         except Exception as e:
-            if "Rate limited" in str(e) or "Too Many Requests" in str(e):
+            # if "Rate limited" in str(e) or "Too Many Requests" in str(e):
                 time.sleep(5)  # wait before retrying
-                continue
-            else:
-                 raise e
+            #     continue
+            # else:
+            #      raise e
 
     raise ValueError("Yahoo Finance API rate limit exceeded. Please try again in a few minutes.")
 
