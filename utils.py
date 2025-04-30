@@ -51,7 +51,8 @@ def fetch_stock_data(ticker):
             if "Rate limited" in str(e) or "Too Many Requests" in str(e):
                 time.sleep(5)  # wait before retrying
                 continue
-            raise e
+            else:
+                 raise e
 
     raise ValueError("Yahoo Finance API rate limit exceeded. Please try again in a few minutes.")
 
