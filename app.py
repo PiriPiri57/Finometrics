@@ -14,7 +14,7 @@ from statsmodels.tsa.statespace.sarimax import SARIMAX
 st.set_page_config(layout="wide")
 st.title("📈 Stock Price Prediction Dashboard")
 
-ticker = st.text_input("Enter Stock Ticker (e.g., RELIANCE.NS):", value="AAPL")
+ticker = st.text_input("Enter Stock Ticker (e.g., RELIANCE.NS):", value="RELIANCE.NS")
 
 if ticker:
    
