@@ -53,7 +53,9 @@ def fetch_stock_data(ticker):
     try:
         fallback_df = pd.read_csv("DS_Dataset_FinanceTrends.csv")
         fallback_df["Date"] = pd.to_datetime(fallback_df["Date"])
-        st.warning("Live data fetch failed. Using fallback data from reliance.csv.")
+        numeric_cols = ["Open", "High", "Low", "Close", "Volume"]
+        fallback_df[numeric_cols] = fallback_df[numeric_cols].apply(pd.to_numeric, errors="coerce")
+        st.warning("Live data fetch failed. Using fallback data from DS_Dataset_FinanceTrends.csv.")
         return fallback_df
     except FileNotFoundError:
         raise ValueError("Both live fetch and fallback CSV failed. Please ensure reliance.csv is available.")
