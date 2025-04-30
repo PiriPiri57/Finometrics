@@ -17,6 +17,7 @@ st.title("📈 Stock Price Prediction Dashboard")
 ticker = st.text_input("Enter Stock Ticker (e.g., RELIANCE.NS):", value="RELIANCE.NS")
 
 if ticker:
+   
     df_raw = fetch_stock_data(ticker)
     df = add_features(df_raw.copy())
     df, today_data = split_latest_row(df_raw.copy(), df.copy())
