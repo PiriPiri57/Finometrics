@@ -50,16 +50,16 @@ def fetch_stock_data(ticker):
             time.sleep(3)
 
     # Fallback to saved CSV after retries fail
-    try:
-        fallback_df = pd.read_csv("DS_Dataset_FinanceTrends.csv")
-        fallback_df["Date"] = pd.to_datetime(fallback_df["Date"],errors="coerce")
-        numeric_cols = ["Open", "High", "Low", "Close", "Volume"]
-        fallback_df[numeric_cols] = fallback_df[numeric_cols].apply(pd.to_numeric, errors="coerce")
-        fallback_df.dropna(inplace=True)  # ✅ Drop invalid rows
-        st.warning("Live data fetch failed. Using fallback data from DS_Dataset_FinanceTrends.csv.")
-        return fallback_df
-    except FileNotFoundError:
-        raise ValueError("Both live fetch and fallback CSV failed. Please ensure reliance.csv is available.")
+    # try:
+    #     fallback_df = pd.read_csv("DS_Dataset_FinanceTrends.csv")
+    #     fallback_df["Date"] = pd.to_datetime(fallback_df["Date"],errors="coerce")
+    #     numeric_cols = ["Open", "High", "Low", "Close", "Volume"]
+    #     fallback_df[numeric_cols] = fallback_df[numeric_cols].apply(pd.to_numeric, errors="coerce")
+    #     fallback_df.dropna(inplace=True)  # ✅ Drop invalid rows
+    #     st.warning("Live data fetch failed. Using fallback data from DS_Dataset_FinanceTrends.csv.")
+    #     return fallback_df
+    # except FileNotFoundError:
+    #     raise ValueError("Both live fetch and fallback CSV failed. Please ensure reliance.csv is available.")
 
 def add_features(df):
     """
@@ -69,23 +69,23 @@ def add_features(df):
     Returns:
         pd.DataFrame: DataFrame with added features
     """
-   # 🔍 Inspect raw input
-    st.write("🔍 dtypes BEFORE conversion:", df.dtypes)
-    st.write("🔍 First few rows:", df.head())
+#    # 🔍 Inspect raw input
+#     st.write("🔍 dtypes BEFORE conversion:", df.dtypes)
+#     st.write("🔍 First few rows:", df.head())
 
-    # ✅ Convert important columns to numeric (forcefully)
-    numeric_cols = ["Open", "High", "Low", "Close", "Volume"]
-    df[numeric_cols] = df[numeric_cols].apply(pd.to_numeric, errors="coerce")
+#     # ✅ Convert important columns to numeric (forcefully)
+#     numeric_cols = ["Open", "High", "Low", "Close", "Volume"]
+#     df[numeric_cols] = df[numeric_cols].apply(pd.to_numeric, errors="coerce")
 
-    # ✅ Convert Date column to datetime if present
-    if "Date" in df.columns:
-        df["Date"] = pd.to_datetime(df["Date"], errors="coerce")
+#     # ✅ Convert Date column to datetime if present
+#     if "Date" in df.columns:
+#         df["Date"] = pd.to_datetime(df["Date"], errors="coerce")
 
-    # ✅ Drop rows with any missing values
-    df.dropna(inplace=True)
+#     # ✅ Drop rows with any missing values
+#     df.dropna(inplace=True)
 
-    # 🔍 Confirm cleanup
-    st.write("✅ dtypes AFTER cleaning:", df.dtypes)
+#     # 🔍 Confirm cleanup
+#     st.write("✅ dtypes AFTER cleaning:", df.dtypes)
 
     # 🧠 Feature engineering
     df["Year"] = df["Date"].dt.year
