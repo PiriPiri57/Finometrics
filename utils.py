@@ -32,7 +32,7 @@ def get_last_trading_day():
     else:
         return trading_days[trading_days < np.datetime64(today)].max().date()
 
-
+@st.cache_data(ttl=3600)
 def fetch_stock_data(ticker):
     last_day = get_last_trading_day()
 
