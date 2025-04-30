@@ -69,6 +69,17 @@ def add_features(df):
     Returns:
         pd.DataFrame: DataFrame with added features
     """
+    st.write("📊 Column types before feature engineering:", df.dtypes)
+
+    # Convert to numeric
+    numeric_cols = ["Close", "High", "Low", "Open", "Volume"]
+    df[numeric_cols] = df[numeric_cols].apply(pd.to_numeric, errors="coerce")
+
+    # Ensure Date is datetime if still present
+    if "Date" in df.columns:
+        df["Date"] = pd.to_datetime(df["Date"], errors="coerce")
+
+    df.dropna(inplace=True)
     df["Year"] = df["Date"].dt.year
     df["Month"] = df["Date"].dt.month
     df["Day"] = df["Date"].dt.day
