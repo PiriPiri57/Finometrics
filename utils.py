@@ -51,7 +51,7 @@ def fetch_stock_data(ticker):
 
     # Fallback to saved CSV after retries fail
     try:
-        fallback_df = pd.read_csv("reliance.csv")
+        fallback_df = pd.read_csv("DS_Dataset_FinanceTrends.csv")
         st.warning("Live data fetch failed. Using fallback data from reliance.csv.")
         return fallback_df
     except FileNotFoundError:
