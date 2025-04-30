@@ -37,6 +37,8 @@ def fetch_stock_data(ticker):
     df = yf.download(
         ticker, end=(last_day + datetime.timedelta(days=1)).strftime("%Y-%m-%d")
     )
+    if df.empty:
+        raise ValueError(f"No stock data found for ticker '{ticker}'. Please check the ticker or try again later.")
     df.reset_index(inplace=True)
     df.drop(columns=["Dividends", "Stock Splits"], inplace=True, errors="ignore")
     return df
@@ -95,6 +97,9 @@ def add_features(df):
 def split_latest_row(df_raw, df):
     today_data = df_raw.iloc[-1]
     df = df.iloc[:-1]
+    if df_raw.empty or df.empty:
+        raise ValueError("DataFrame is empty. Cannot split latest row.")
+
     return df, today_data
 
 def prepare_data(df):
