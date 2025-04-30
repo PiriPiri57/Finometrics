@@ -69,17 +69,25 @@ def add_features(df):
     Returns:
         pd.DataFrame: DataFrame with added features
     """
-    st.write("📊 Column types before feature engineering:", df.dtypes)
+   # 🔍 Inspect raw input
+    st.write("🔍 dtypes BEFORE conversion:", df.dtypes)
+    st.write("🔍 First few rows:", df.head())
 
-    # Convert to numeric
-    numeric_cols = ["Close", "High", "Low", "Open", "Volume"]
+    # ✅ Convert important columns to numeric (forcefully)
+    numeric_cols = ["Open", "High", "Low", "Close", "Volume"]
     df[numeric_cols] = df[numeric_cols].apply(pd.to_numeric, errors="coerce")
 
-    # Ensure Date is datetime if still present
+    # ✅ Convert Date column to datetime if present
     if "Date" in df.columns:
         df["Date"] = pd.to_datetime(df["Date"], errors="coerce")
 
+    # ✅ Drop rows with any missing values
     df.dropna(inplace=True)
+
+    # 🔍 Confirm cleanup
+    st.write("✅ dtypes AFTER cleaning:", df.dtypes)
+
+    # 🧠 Feature engineering
     df["Year"] = df["Date"].dt.year
     df["Month"] = df["Date"].dt.month
     df["Day"] = df["Date"].dt.day
@@ -100,7 +108,8 @@ def add_features(df):
 
     df["Log_Volume"] = df["Volume"].shift(1)
     df["Rolling_Volume"] = df["Volume"].rolling(3).mean()
-    df.drop(columns=["Date"], inplace=True, errors="ignore")
+
+    # Final cleanup
     df.dropna(inplace=True)
     df.drop(
         columns=[
@@ -116,9 +125,10 @@ def add_features(df):
             "rolling_mean_20",
         ],
         inplace=True,
-        errors="ignore",
+        errors="ignore"
     )
-   
+
+    # 🧾 Final feature selection
     df = df[['High', 'Close', 'Volume', 'lag_1', 'rolling_mean_5', 'Log_Return']]
     return df
 
