@@ -3,7 +3,7 @@
 # Stock Market Analysis, Prediction, and Strategy Simulation
 
 Welcome to the Stock Market Prediction project.  
-This project uses real-time stock data to predict stock prices, classify market movements (gain/fall), and simulate trading strategies using machine learning and time series forecasting models.
+This project uses real-time stock data to predict stock prices, classify market movements (gain/fall), and simulate trading strategies using machine learning and time series forecasting models,namely SARIMA.
 
 ---
 
@@ -130,6 +130,11 @@ pip install yfinance pandas matplotlib seaborn scikit-learn xgboost statsmodels 
 - Statsmodels for SARIMA time series models  
 
 ---
+## Team Members
+
+- Riddhika Arora
+- Priyanshu Kumar
+- Ojas Samar
 
 ## Open in Google Colab
 
