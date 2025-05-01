@@ -42,11 +42,11 @@ def fetch_stock_data(ticker):
             df = yf.download(
                 ticker, end=(last_day + datetime.timedelta(days=1)).strftime("%Y-%m-%d")
             )
-            if not df.empty:
+            if df is not None and df.empty:
                 df.reset_index(inplace=True)
                 df.drop(columns=["Dividends", "Stock Splits"], inplace=True, errors="ignore")
                 return df
-        except Exception as e:
+        except Exception :
             time.sleep(3)
 
   
