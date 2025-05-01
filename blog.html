@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Finometrics | Predicting the Stock Market</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #f9fafb;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(to right, #1e3a8a, #2563eb);
+      color: white;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    header p {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+    }
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    section {
+      margin-bottom: 2.5rem;
+    }
+    h2 {
+      font-size: 1.8rem;
+      color: #111827;
+    }
+    p, li {
+      font-size: 1rem;
+    }
+    ul {
+      padding-left: 1.2rem;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #e5e7eb;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Finometrics: Predicting & Simulating the Stock Market</h1>
+    <p>Using machine learning to analyze, predict, and act in the Indian stock market</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>📌 Overview</h2>
+      <p>Finometrics is a full-fledged data science project aimed at demystifying the stock market through machine learning. The project focuses on Reliance Industries Ltd. and includes stock price prediction, market movement classification, and strategic simulation of trading decisions.</p>
+    </section>
+
+    <section>
+      <h2>🧾 Dataset</h2>
+      <ul>
+        <li>Source: Real-time data via <code>yfinance</code></li>
+        <li>Stock: Reliance Industries (RELIANCE.NS)</li>
+        <li>Features: Close Price, Volume, Lag Indicators, Log Returns, Volume Shifts</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2> Methodology</h2>
+      <ul>
+        <li><strong>Feature Engineering:</strong> Lag features, rolling means, log returns</li>
+        <li><strong>Regression:</strong> Linear, Decision Tree, Random Forest models</li>
+        <li><strong>Classification:</strong> Predicting gain/fall using SVM and Logistic Regression</li>
+        <li><strong>Time Series Forecasting:</strong> SARIMA model for multi-step prediction</li>
+        <li><strong>Strategy Simulation:</strong> Custom rules to Buy/Sell/Hold with performance charts</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>📊 Key Results</h2>
+      <ul>
+        <li>Regression RMSE under ₹10 for daily predictions</li>
+        <li>SARIMA forecasts showed robust pattern learning</li>
+        <li>Trading simulation yielded ~15–20% annualized return (hypothetical)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>🔍 Conclusion</h2>
+      <p>While market predictions are never foolproof, Finometrics demonstrates that with the right tools and feature engineering, data science can offer actionable insights. This project showcases the potential of AI in financial analysis and trading strategy development.</p>
+    </section>
+  </main>
+
+  <footer>
+    Made using Python, yFinance, Scikit-Learn, and SARIMA | Project by [Priyanshu, Riddhika, Ojas]
+  </footer>
+</body>
+</html>
