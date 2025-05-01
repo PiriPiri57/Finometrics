@@ -133,8 +133,11 @@ pip install yfinance pandas matplotlib seaborn scikit-learn xgboost statsmodels 
 
 ## Open in Google Colab
 
-[Open in Colab](https://colab.research.google.com/github/riddhika05/Finometrics/blob/main/Stock_Market_Analysis.ipynb)
+[Open in Colab](https://colab.research.google.com/github/riddhika05/Finometrics/blob/main/Stock_Analysis.ipynb)
 
 
 
 ---
+
+ **Live Demo**:  
+ [Click here to open the app](https://finometrics-h8kanm66teun6dubtnuzsv.streamlit.app/)
