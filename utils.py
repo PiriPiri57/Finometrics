@@ -52,6 +52,8 @@ def fetch_stock_data(ticker):
   
     try:
         fallback_df = pd.read_csv("DS_Dataset_FinanceTrends.csv")
+        if fallback_df.iloc[0].astype(str).str.contains("RELIANCE.NS").any():
+         fallback_df = fallback_df.iloc[1:]
         fallback_df["Date"] = pd.to_datetime(fallback_df["Date"],errors="coerce")
         numeric_cols = ["Open", "High", "Low", "Close", "Volume"]
         fallback_df[numeric_cols] = fallback_df[numeric_cols].apply(pd.to_numeric, errors="coerce")
