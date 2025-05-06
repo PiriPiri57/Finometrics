@@ -12,9 +12,11 @@ ogImage: https://cdn.hashnode.com/res/hashnode/image/upload/v1746130352857/547d0
 
 [GitHub Repo](https://github.com/riddhika05/Finometrics)
 
-[Colab](https://colab.research.google.com/drive/10jnqBRc4eKo5CaUSS6JyqDQKvuRQQDaM?usp=sharing)
+[Colab](https://colab.research.google.com/drive/1NVVZRanFSpol36oYsGIFekEDhExvIbtR#scrollTo=mh5GFuWwVz09)
 
 [Streamlit](https://finometrics-h8kanm66teun6dubtnuzsv.streamlit.app/)
+
+[Video](https://www.youtube.com/watch?v=xZLs05-jYIc)
 
 ---
 
